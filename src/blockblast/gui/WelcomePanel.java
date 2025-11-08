@@ -281,7 +281,7 @@ public class WelcomePanel extends JPanel implements MouseListener
 		try
 		{
 			setOpaque(false);
-			InputStream in = getClass().getResourceAsStream("/blockblast/images/background2.png");
+			InputStream in = getClass().getResourceAsStream("/images/background2.png");
 			background = ImageIO.read(in);
 			g2.drawImage(background, 0, 0, getWidth(), getHeight(), 0, 0,
 					background.getWidth(), background.getHeight(), null);

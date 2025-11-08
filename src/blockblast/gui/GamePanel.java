@@ -312,7 +312,7 @@ public class GamePanel extends JPanel
 		{
 			setOpaque(false);
 			InputStream backgroundStream = getClass()
-				.getResourceAsStream("/blockblast/images/background2.png");
+				.getResourceAsStream("/images/background2.png");
 			background = ImageIO.read(backgroundStream);
 
 			g2.drawImage(background, 0, 0, getWidth(), getHeight(), 0, 0,

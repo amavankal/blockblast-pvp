@@ -44,7 +44,7 @@ public class InfoComponent extends JPanel
 		try
 		{
 			InputStream infoIconStream = getClass()
-				.getResourceAsStream("/blockblast/images/infoIcon.png");
+				.getResourceAsStream("/images/infoIcon.png");
 			infoIcon = ImageIO.read(infoIconStream);
 		}
 		catch (IOException io)

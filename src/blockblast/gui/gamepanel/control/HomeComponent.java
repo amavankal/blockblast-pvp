@@ -44,7 +44,7 @@ public class HomeComponent extends JPanel
 		try
 		{
 			InputStream homeIconStream = getClass()
-				.getResourceAsStream("/blockblast/images/homeIcon2.png");
+				.getResourceAsStream("/images/homeIcon2.png");
 			homeIcon = ImageIO.read(homeIconStream);
 		}
 		catch (IOException io)
