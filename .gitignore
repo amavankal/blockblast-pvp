@@ -1,6 +1,5 @@
-# Ignore compiled files -- so don't need to worry about un updated binaries
-*.class
-*.jar
+# compiled output directory
+bin/
 
 # macOS system files
 .DS_Store
