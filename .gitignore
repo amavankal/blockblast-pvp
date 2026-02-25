@@ -1,3 +1,6 @@
-# Java ignores - class files, jars
+# Ignore compiled files -- so don't need to worry about un updated binaries
 *.class
 *.jar
+
+# macOS system files
+.DS_Store
