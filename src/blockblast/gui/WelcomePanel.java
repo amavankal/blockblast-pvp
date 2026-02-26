@@ -297,9 +297,10 @@ public class WelcomePanel extends JPanel
 	}
 
 	private class WelcomePanelMouseAdapter extends MouseAdapter {
-		/**	Changes the color of the word START in welcome text and the color of the Start
-		 * 		button when mouse hovers over the Start button.
-		 * @param e the mouse
+		/**	Changes the color of the Start text in the welcome text and 
+		 *		the color of the Start button when mouse hovers over
+		 *		associated component.
+		 *	@param e associated MouseEvent
 		 */
 		@Override
 		public void mouseEntered(MouseEvent e) {
@@ -311,12 +312,13 @@ public class WelcomePanel extends JPanel
 				
 				// change the color of the word START too
 				changeStartWordColor(BUTTON_PRESSED);
-			}
+			}			
 		}
-		
-		/**	Changes beck the color of the word START in welcome text and the color of the 
-		 * 		Start button when mouse stops hovering over the Start button.
-		 * @param e the mouse
+
+		/**	Changes back the color of the Start text in the welcome message and 
+		 *		the color of the Start button when mouse stops hovering over
+		 *		associated component.
+		 *	@param e associated MouseEvent
 		 */
 		@Override
 		public void mouseExited(MouseEvent e) {
@@ -331,9 +333,9 @@ public class WelcomePanel extends JPanel
 			}
 		}
 		
-		/**	Helper method for mouseEntered & mouseExited. Changes color of word Start
-		 * 		in the welcome text.
-		 * @param c the color to change the text to
+		/**	Helper method for mouseEntered and mouseExited. Changes color of the
+		 * 		word Start in welcome message.
+		 * @param c color to change the text to
 		 */
 		private void changeStartWordColor(Color c)
 		{
