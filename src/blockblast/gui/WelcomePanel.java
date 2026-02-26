@@ -22,10 +22,10 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
+//import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -38,7 +38,7 @@ import javax.swing.text.StyledDocument;
 
 import blockblast.core.Block;
 
-public class WelcomePanel extends JPanel implements MouseListener
+public class WelcomePanel extends JPanel
 {
 	// serial version uid
 	private static final long serialVersionUID = -6673190543027070791L;
@@ -103,10 +103,12 @@ public class WelcomePanel extends JPanel implements MouseListener
 	protected JTextPane welcomeText;
 	protected JPanel startContainer;
 	protected JButton start;
+	private WelcomePanelMouseAdapter mouseAdapter;
 	
 	public WelcomePanel()
 	{
 		super(true); // double buffered
+		mouseAdapter = new WelcomePanelMouseAdapter();
 		
 		// 1: set layout of this panel
 		BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
@@ -259,7 +261,7 @@ public class WelcomePanel extends JPanel implements MouseListener
 
 		
 		// configure  button pressed
-		start.addMouseListener(this);
+		start.addMouseListener(mouseAdapter);
 		
 		// add start to this panel
 		startContainer.add(start);
@@ -277,7 +279,7 @@ public class WelcomePanel extends JPanel implements MouseListener
 		BufferedImage background;
 		
 		// FIXME: OS-independent filepath
-		File f = new File("");
+		//File f = new File("");
 		try
 		{
 			setOpaque(false);
@@ -296,62 +298,58 @@ public class WelcomePanel extends JPanel implements MouseListener
 		}
 	}
 
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		if (e.getSource() == start)
-		{
-			start.setForeground(BUTTON_PRESSED);
-			start.setBorder(new RoundedBorder(BUTTON_PRESSED, 
-				new Color(143, 212, 238, 150), 1.5f, .80f, 1f));
+	private class WelcomePanelMouseAdapter extends MouseAdapter {
+		/**	Changes the color of the Start text in the welcome message and 
+		 *		the color of the Start button when mouse hovers over
+		 *		associated component.
+		 *	@param e associated MouseEvent
+		 */
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			if (e.getSource() == start)
+			{
+				start.setForeground(BUTTON_PRESSED);
+				start.setBorder(new RoundedBorder(BUTTON_PRESSED, 
+					new Color(143, 212, 238, 150), 1.5f, .80f, 1f));
+				
+				// change the color of the word START too
+				changeStartWordColor(BUTTON_PRESSED);
+			}
 			
-			// change the color of the word START too
-			changeStartWordColor(BUTTON_PRESSED);
+		}
+
+		/**	Changes back the color of the Start text in the welcome message and 
+		 *		the color of the Start button when mouse stops hovering over
+		 *		associated component.
+		 *	@param e associated MouseEvent
+		 */
+		@Override
+		public void mouseExited(MouseEvent e) {
+			if (e.getSource() == start)
+			{
+				start.setForeground(Block.BLOCK_COLORS[3]);
+				start.setBorder(new RoundedBorder(Block.BLOCK_COLORS[3], 
+					new Color(143, 212, 238), 1.5f, .80f, 1f));
+				
+				// change the color of the word START too
+				changeStartWordColor(Block.BLOCK_COLORS[3]);
+			}
 		}
 		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		if (e.getSource() == start)
+		/**	Helper method for mouseEntered and mouseExited. Changes color of the
+		 * 		word Start in welcome message.
+		 * @param c color to change the text to
+		 */
+		private void changeStartWordColor(Color c)
 		{
-			start.setForeground(Block.BLOCK_COLORS[3]);
-			start.setBorder(new RoundedBorder(Block.BLOCK_COLORS[3], 
-				new Color(143, 212, 238), 1.5f, .80f, 1f));
+			//change the color of the word START
+			StyledDocument styledDoc = welcomeText.getStyledDocument();
 			
-			// change the color of the word START too
-			changeStartWordColor(Block.BLOCK_COLORS[3]);
+			SimpleAttributeSet newStart = new SimpleAttributeSet();
+			StyleConstants.setForeground(newStart, c);
+			
+			styledDoc.setCharacterAttributes(TEXT[0][0].length() + TEXT[1][0].length()
+				+ TEXT[2][0].length(), TEXT[2][1].length(), newStart, false);
 		}
-	}
-	
-	private void changeStartWordColor(Color c)
-	{
-		//change the color of the word START
-		StyledDocument styledDoc = welcomeText.getStyledDocument();
-		
-		SimpleAttributeSet newStart = new SimpleAttributeSet();
-		StyleConstants.setForeground(newStart, c);
-		
-		styledDoc.setCharacterAttributes(TEXT[0][0].length() + TEXT[1][0].length() + TEXT[2][0].length(), 
-				TEXT[2][1].length(), newStart, false);
 	}
 }
