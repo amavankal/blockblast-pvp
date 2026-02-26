@@ -108,7 +108,7 @@ public class WelcomePanel extends JPanel
 	public WelcomePanel()
 	{
 		super(true); // double buffered
-		mouseAdapter = new WelcomePanelMouseAdapter();
+		mouseAdapter = new WelcomePanelMouseAdapter(); // instantiate mouse adapter
 		
 		// 1: set layout of this panel
 		BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
@@ -233,7 +233,6 @@ public class WelcomePanel extends JPanel
 	}
 
 	/**	Initializes the start button
-	 * 
 	 */
 	private void initializeStartButton()
 	{
@@ -267,8 +266,7 @@ public class WelcomePanel extends JPanel
 		startContainer.add(start);
 	}
 	
-	/**
-	 * PAINTS THE BOARD
+	/**	PAINTS THE BOARD
 	 */
 	@Override
 	public void paintComponent(Graphics g)
@@ -278,7 +276,7 @@ public class WelcomePanel extends JPanel
 		
 		BufferedImage background;
 		
-		// FIXME: OS-independent filepath
+		// FIXME: use OS-independent filepath
 		//File f = new File("");
 		try
 		{
@@ -299,7 +297,7 @@ public class WelcomePanel extends JPanel
 	}
 
 	private class WelcomePanelMouseAdapter extends MouseAdapter {
-		/**	Changes the color of the Start text in the welcome message and 
+		/**	Changes the color of the Start text in the welcome text and 
 		 *		the color of the Start button when mouse hovers over
 		 *		associated component.
 		 *	@param e associated MouseEvent
@@ -314,8 +312,7 @@ public class WelcomePanel extends JPanel
 				
 				// change the color of the word START too
 				changeStartWordColor(BUTTON_PRESSED);
-			}
-			
+			}			
 		}
 
 		/**	Changes back the color of the Start text in the welcome message and 
