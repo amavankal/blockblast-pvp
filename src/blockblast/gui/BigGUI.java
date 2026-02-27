@@ -22,7 +22,9 @@ package blockblast.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import java.awt.Color;
 import java.awt.Font;
@@ -99,6 +101,30 @@ public class BigGUI extends JFrame implements ActionListener
 			// 3: now to play the actual game...
 			gamePage = new GamePanel(this);
 			add(gamePage);
+		}
+	}
+
+	/**	Helper method to load image.
+	 * @param imageFile name of image to load. it is assumed the image
+	 * 			is located in resources/images/ in src or images/ in bin/
+	 * @return a BufferedImage derived from the given image file
+	 */
+	public static BufferedImage loadImage(String imageFile) {
+		try {
+			InputStream imageStream = BigGUI.class.getResourceAsStream("/images/" + imageFile);
+			
+			if (imageStream == null)
+				throw new Exception("Image " + imageFile + " not found in /images");
+			
+			// return image
+			return ImageIO.read(imageStream);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Can not retrieve welcome screen background.");
+
+			// return null
+			return null;
 		}
 	}
 

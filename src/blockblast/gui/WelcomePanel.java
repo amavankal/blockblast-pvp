@@ -25,9 +25,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-import java.io.InputStream;
 
-import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.text.SimpleAttributeSet;
@@ -61,7 +59,7 @@ public class WelcomePanel extends JPanel
 	private static final String BUTTON_TEXT = "START!";
 	private static final String BUTTON_FONT = BigGUI.TITLE_FONT.getFontName();
 
-	private static final BufferedImage BACKGROUND = loadImage("background2.png");
+	private static final BufferedImage BACKGROUND = BigGUI.loadImage("background2.png");
 	
 	private static final String[][] TEXT = {
 			{"WELCOME TO\n"},
@@ -273,30 +271,6 @@ public class WelcomePanel extends JPanel
 		} else {
 			setOpaque(true);
 			setBackground(BigGUI.BACKGROUND);
-		}
-	}
-
-	/**	Helper method to load image.
-	 * @param imageFile name of image to load. it is assumed the image
-	 * 			is located in resources/images/ in src or images/ in bin/
-	 * @return a BufferedImage derived from the given image file
-	 */
-	private static BufferedImage loadImage(String imageFile) {
-		try {
-			InputStream imageStream = BigGUI.class.getResourceAsStream("/images/" + imageFile);
-			
-			if (imageStream == null)
-				throw new Exception("Image " + imageFile + " not found in /images");
-			
-			// return image
-			return ImageIO.read(imageStream);
-		}
-		catch (Exception e) {
-			System.out.println(e.getMessage());
-			System.out.println("Can not retrieve welcome screen background.");
-
-			// return null
-			return null;
 		}
 	}
 

@@ -3,7 +3,6 @@
  *
  */
 
-
 package blockblast.gui.gamepanel.control;
 
 import java.awt.Graphics;
@@ -13,13 +12,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
 
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import blockblast.gui.BigGUI;
 import blockblast.gui.GamePanel;
 
 public class InfoComponent extends JPanel
@@ -38,18 +35,7 @@ public class InfoComponent extends JPanel
 	
 	public InfoComponent()
 	{
-		// FIXME: fill homeIcon; OS-independent file path?
-		// FIXME: try nio.file ? to get over OS-dependency
-		try
-		{
-			InputStream infoIconStream = getClass()
-				.getResourceAsStream("/images/infoIcon.png");
-			infoIcon = ImageIO.read(infoIconStream);
-		}
-		catch (IOException io)
-		{
-			System.out.println(io.getMessage() + " Could not read info icon.");
-		}
+		infoIcon = BigGUI.loadImage("infoIcon.png");
 		
 		// set bounds
 		bounds = null;

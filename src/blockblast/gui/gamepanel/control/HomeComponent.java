@@ -12,16 +12,13 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-//import java.awt.event.MouseListener;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
 
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import blockblast.gui.BigGUI;
 import blockblast.gui.GamePanel;
 
 public class HomeComponent extends JPanel
@@ -40,17 +37,7 @@ public class HomeComponent extends JPanel
 	
 	public HomeComponent()
 	{
-		// FIXME: fill homeIcon. make OS-independent filepath
-		try
-		{
-			InputStream homeIconStream = getClass()
-				.getResourceAsStream("/images/homeIcon2.png");
-			homeIcon = ImageIO.read(homeIconStream);
-		}
-		catch (IOException io)
-		{
-			System.out.println(io.getMessage());
-		}
+		homeIcon = BigGUI.loadImage("homeIcon.png");
 		
 		// set bounds
 		bounds = null;
