@@ -4,15 +4,16 @@
  * 
  */
 
-
 package blockblast.gui.gamepanel;
 
 import java.awt.Dimension;
+import java.awt.image.BufferedImage;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
+import blockblast.gui.BigGUI;
 import blockblast.gui.GamePanel;
 import blockblast.gui.gamepanel.control.*;
 
@@ -25,13 +26,17 @@ public class ControlPanel extends JPanel
 	public static final int HOME_COMPONENT = 1;
 	public static final int INFO_COMPONENT = 2;
 	public static final int HINTS_COMPONENT = 3;
+
+	// images
+	private static final BufferedImage HOME_ICON = BigGUI.loadImage("homeIcon2.png");
+	private static final BufferedImage INFO_ICON = BigGUI.loadImage("infoIcon.png");
 	
 	// gui instance variables
 	private BoxLayout layout;
 	
 	private WinMessageComponent winInstructions;
-	private HomeComponent homeButton;
-	private InfoComponent informationButton;
+	private ResponsiveImageComponent homeButton;
+	private ResponsiveImageComponent informationButton;
 	private HintsComponent hints;
 	
 	private Dimension winDim;
@@ -39,7 +44,7 @@ public class ControlPanel extends JPanel
 	private Dimension infoDim;
 	private Dimension hintsDim;
 	
-	// associated GamePanle
+	// associated GamePanel
 	private GamePanel associatedPanel;
 	
 	public ControlPanel(GamePanel associate)
@@ -54,13 +59,13 @@ public class ControlPanel extends JPanel
 		// set associatedPanel
 		associatedPanel = associate;
 		
-		// calc dimensions
+		// calc dimensions for children
 		calcDimensions(associatedPanel.getControlPanelSize());
 		
 		// initialize the components
 		winInstructions = new WinMessageComponent(associatedPanel, this);
-		homeButton = new HomeComponent();
-		informationButton = new InfoComponent();
+		homeButton = new ResponsiveImageComponent(HOME_ICON, this::onHomeClick);
+		informationButton = new ResponsiveImageComponent(INFO_ICON, this::onInfoClick);
 		hints = new HintsComponent(this);
 		
 		// set dimensions
@@ -93,20 +98,22 @@ public class ControlPanel extends JPanel
 	
 	public Dimension getChildSize(int child)
 	{
-		Dimension result = null;
-		
 		switch (child)
 		{
-			case WIN_MESSAGE_COMPONENT: result = winDim;
-			break;
-			case HOME_COMPONENT: result = homeDim;
-			break;
-			case INFO_COMPONENT: result = infoDim;
-			break;
-			case HINTS_COMPONENT: result = hintsDim;
-			break;
+			case WIN_MESSAGE_COMPONENT: return winDim;
+			case HOME_COMPONENT: return homeDim;
+			case INFO_COMPONENT: return infoDim;
+			case HINTS_COMPONENT: return hintsDim;
 		}
 		
-		return result;
+		return null;
+	}
+
+	private void onHomeClick() {
+		System.out.println("Do home click procedure");
+	}
+
+	private void onInfoClick() {
+		System.out.println("Do info click procedure");
 	}
 }
