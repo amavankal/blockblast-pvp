@@ -57,15 +57,11 @@ public class WelcomePanel extends JPanel
 			+ BUFFER_1_HEIGHT + BUFFER_2_HEIGHT + 10;
 	public static final int COMPONENT_WIDTH = TEXT_WIDTH;
 	
-	
-	public static final String TITLE_FONT = "Jokerman"; // FIXME: find alts OR download fonts
-	public static final String PLAIN_FONT = "Juice ITC";
-	public static final String START_FONT = TITLE_FONT;
-	
 	protected static final double WIDTH_SCREEN_PROP = .5;
 	protected static final double HEIGHT_WIDTH_PROP = 2.0 / 5;
 	
-	private static final String START = "START!";
+	private static final String BUTTON_TEXT = "START!";
+	private static final String BUTTON_FONT = BigGUI.TITLE_FONT.getFontName();
 	
 	private static final String[][] TEXT = {
 			{"WELCOME TO\n"},
@@ -74,9 +70,9 @@ public class WelcomePanel extends JPanel
 	};
 	
 	private static final String[][] FONTS = {
-			{PLAIN_FONT},
-			{TITLE_FONT},
-			{PLAIN_FONT, START_FONT}
+			{BigGUI.SECONDARY_FONT.getFontName()},
+			{BigGUI.TITLE_FONT.getFontName()},
+			{BigGUI.SECONDARY_FONT.getFontName(), BigGUI.TITLE_FONT.getFontName()}
 	};
 	private static final int[][] FONT_SIZES = {
 			{20},
@@ -240,26 +236,22 @@ public class WelcomePanel extends JPanel
 		startContainer = new JPanel();
 		startContainer.setOpaque(false);
 		
-		// create JButton and set clear + content area not filled
-		start = new JButton(START);
+		// create JButton and set clear, content area not filled, and preferred size
+		start = new JButton(BUTTON_TEXT);
 		start.setOpaque(false);
 		start.setContentAreaFilled(false);
-		
-		// set preferred button size and initialize the text
 		start.setPreferredSize(new Dimension(START_WIDTH, START_HEIGHT));
-		start.setText(START);
 		
 		// set text color and font for start button
 		start.setForeground(Block.BLOCK_COLORS[3]);
-		start.setFont(new Font(START_FONT, Font.PLAIN, 20));
+		start.setFont(new Font(BUTTON_FONT, Font.PLAIN, 20));
 		
 		// add new RoundedBorder
 		RoundedBorder border = new RoundedBorder(Block.BLOCK_COLORS[3], 
 				new Color(143, 212, 238), 1.5f, .80f, 1f);
 		start.setBorder(border);
-
 		
-		// configure  button pressed
+		// add mouse listener to react when mouse hovers
 		start.addMouseListener(mouseAdapter);
 		
 		// add start to this panel
