@@ -7,14 +7,11 @@
 
 package blockblast.gui.gamepanel;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
 
 import blockblast.gui.GamePanel;
 import blockblast.gui.gamepanel.control.*;

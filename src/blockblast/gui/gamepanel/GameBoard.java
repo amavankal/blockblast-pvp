@@ -36,7 +36,6 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Arrays;
 
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.event.MouseInputListener;
 
@@ -94,7 +93,7 @@ public class GameBoard extends JComponent implements MouseInputListener, ActionL
 	private int selectedBlock;
 	private int mouseX;
 	private int mouseY;
-	private boolean mouseDragged;
+	private boolean mouseDragged; // used
 	private double blockX;
 	private double blockY;
 	
@@ -217,7 +216,6 @@ public class GameBoard extends JComponent implements MouseInputListener, ActionL
 		double unitHeight = width / GRID_SIZE;
 		
 		// fill squares - first null, then others
-//		double 
 		for (int row = 0; row < GRID_SIZE; row++)
 			for (int col = 0; col < GRID_SIZE; col++)			
 				if (colorGrid[row][col] == null)
@@ -388,16 +386,19 @@ public class GameBoard extends JComponent implements MouseInputListener, ActionL
 		if (selectedBlock != NO_BLOCK)
 		{
 			double unitSize = getWidth() * GRID_UNIT_WIDTH_PROP;
-			boolean[][] block = grid.getBlockBank()[selectedBlock].getBlock();
+//			boolean[][] block = grid.getBlockBank()[selectedBlock].getBlock();
 			
-			double blockHeight = block.length * unitSize;
-			double blockWidth = block[0].length * unitSize;
+//			double blockHeight = block.length * unitSize;
+//			double blockWidth = block[0].length * unitSize;
 			
 			paintBlock(g2, grid.getBlockBank()[selectedBlock], 3, unitSize, blockX, blockY);
-			
 		}
 	}
 	
+	/**
+	 * Not used right now -- could be used to track turns
+	 * @param g2
+	 */
 	private void paintTurnNum(Graphics2D g2)
 	{
 		String turnString = "Turn: " + turnNum;
