@@ -201,7 +201,7 @@ public class GameBoard extends JComponent implements MouseInputListener, ActionL
 		
 		paintBoard(g2);
 		paintBank(g2);
-//		paintBorder(g2, DARK_BLUE, BORDER_THICKNESS);
+		paintBorder(g2, DARK_BLUE, BORDER_THICKNESS);
 		paintGameActions(g2);
 		paintComboNum(g2);
 		paintBoardDeactivated(g2);
