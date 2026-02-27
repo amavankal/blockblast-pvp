@@ -296,6 +296,9 @@ public class WelcomePanel extends JPanel
 		}
 	}
 
+	/**
+	 *	Mouse Adapter that changes color of Start text on hover
+	 */
 	private class WelcomePanelMouseAdapter extends MouseAdapter {
 		/**	Changes the color of the Start text in the welcome text and 
 		 *		the color of the Start button when mouse hovers over
