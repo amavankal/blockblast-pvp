@@ -8,6 +8,7 @@ The game displays a win message either when someone reaches 5000 points or someo
 To run this project, clone the repo to your local machine and run the following commands in the root directory (they will just compile the project into a directory called bin, and then run the project):
 
 ```
+rm -r bin 2>/dev/null
 mkdir bin
 javac -d bin $(find src/blockblast -name "*.java")
 cp -r src/resources/* bin/
