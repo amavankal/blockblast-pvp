@@ -9,12 +9,10 @@ package blockblast.gui.gamepanel.control;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.geom.Rectangle2D;
 
 import javax.swing.JTextPane;
 import javax.swing.border.LineBorder;
-import javax.swing.text.DefaultCaret;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 

@@ -22,13 +22,13 @@ package blockblast.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Locale;
 
 import javax.swing.JFrame;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
-import java.awt.Insets;
+
+import java.io.InputStream;
 
 
 public class BigGUI extends JFrame implements ActionListener
@@ -38,6 +38,11 @@ public class BigGUI extends JFrame implements ActionListener
 
 	// color constants
 	public static final Color BACKGROUND = new Color(148, 217, 228);
+
+	// font constants
+	public static final Font TITLE_FONT = loadFont("Jokerman.ttf");
+	public static final Font SECONDARY_FONT = loadFont("Juice-ITC.ttf");
+	public static final Font PLAIN_FONT = loadFont("Rockwell.ttf");
 	
 	// instance variables
 	protected WelcomePanel welcome;
@@ -101,6 +106,38 @@ public class BigGUI extends JFrame implements ActionListener
 	 */
 	public static void main(String[] args)
 	{		
+		@SuppressWarnings("unused")
 		BigGUI gui = new BigGUI();
+	}
+
+	/**	Helper method to load fonts. Returns a font object, and also
+	 * 		registers this font with the local Graphics Environment.
+	 * @param fontFile name of font file to load. it is assumed the font
+	 * 			is located in resources/fonts/ in src or fonts/ in bin/
+	 * @return a Font object derived from the given font if possible. If
+	 * 		the font is unable to be created, a basic SansSerif font is returned.
+	 */
+	private static Font loadFont(String fontFile) {
+		Font f;
+		try {
+			InputStream fontStream = BigGUI.class.getResourceAsStream("/fonts/" + fontFile);
+			
+			if (fontStream == null)
+				throw new Exception("Font " + fontFile + " not found in /fonts");
+			
+			// create font
+			f = Font.createFont(Font.TRUETYPE_FONT, fontStream);
+
+			// register font with local Graphics Environment
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			ge.registerFont(f);
+
+			// return font
+			return f;
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+			return new Font("SansSerif", Font.PLAIN, 1);
+		}
 	}
 }
