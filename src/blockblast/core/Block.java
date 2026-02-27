@@ -6,7 +6,6 @@
  */
 package blockblast.core;
 
-import blockblast.gui.*;
 import java.awt.Color; 
 
 public class Block
