@@ -1,6 +1,5 @@
 /**
- * TitleTextPane is a ScoreDisplayer that starts at 0 and increments score.
- * 		It is a UI Component.
+ * Header holds the player's name and displays their score.
  * 
  * TODO
  *  - has play name
@@ -27,7 +26,7 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
-public class TitleTextPane extends JTextPane implements ScoreDisplayer
+public class Header extends JTextPane
 {
 	// serial version uid
 	private static final long serialVersionUID = 2967292054716773470L;
@@ -54,7 +53,7 @@ public class TitleTextPane extends JTextPane implements ScoreDisplayer
 	// state
 	private boolean boardActivated;
 	
-	public TitleTextPane()
+	public Header()
 	{
 		playerName = DEFAULT_NAME + playerNum++;
 		score = 0;
@@ -83,7 +82,6 @@ public class TitleTextPane extends JTextPane implements ScoreDisplayer
 		// set up dialog
 	}
 
-	@Override
 	public int updateScore(int newScore)
 	{
 		int oldScore = score;
@@ -93,7 +91,6 @@ public class TitleTextPane extends JTextPane implements ScoreDisplayer
 		return oldScore;
 	}
 
-	@Override
 	public void setActive(boolean active)
 	{
 		boardActivated = active;

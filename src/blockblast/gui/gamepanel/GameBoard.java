@@ -80,8 +80,8 @@ public class GameBoard extends JComponent implements MouseInputListener, ActionL
 	private static final int BLOCK_3 = 2;
 	private static final int NO_BLOCK = -1;
 	
-	// associated score displayer
-	private ScoreDisplayer scoreDisplay;
+	// associated header
+	private Header header;
 	private GameBoard partnerBoard;
 	
 	// game core variables
@@ -93,7 +93,7 @@ public class GameBoard extends JComponent implements MouseInputListener, ActionL
 	private int selectedBlock;
 	private int mouseX;
 	private int mouseY;
-	private boolean mouseDragged; // used
+	private boolean mouseDragged; // used for future drag & drop
 	private double blockX;
 	private double blockY;
 	
@@ -117,7 +117,7 @@ public class GameBoard extends JComponent implements MouseInputListener, ActionL
 	// buffer
 	private Dimension buffer;
 	
-	public GameBoard(Dimension bufferSize, ScoreDisplayer scoreDisplay)
+	public GameBoard(Dimension bufferSize, Header header)
 	{
 		grid = new BlockGrid();
 		blockExists = new boolean[grid.getBlockBank().length];
@@ -126,7 +126,7 @@ public class GameBoard extends JComponent implements MouseInputListener, ActionL
 		
 		winScore = DEFAULT_WIN_SCORE;
 		
-		this.scoreDisplay = scoreDisplay;
+		this.header = header;
 		
 		// set state vars
 		selectedBlock = NO_BLOCK;
@@ -141,9 +141,9 @@ public class GameBoard extends JComponent implements MouseInputListener, ActionL
 		addMouseMotionListener(this);
 	}
 	
-	public GameBoard(Dimension bufferSize, ScoreDisplayer scoreDisplay, int winScore)
+	public GameBoard(Dimension bufferSize, Header header, int winScore)
 	{
-		this(bufferSize, scoreDisplay);
+		this(bufferSize, header);
 		this.winScore = winScore;
 	}
 	
@@ -162,7 +162,7 @@ public class GameBoard extends JComponent implements MouseInputListener, ActionL
 			turnNum = active ? turnNum + 1 : turnNum - 1;
 		
 		boardActivated = active;
-		scoreDisplay.setActive(active);
+		header.setActive(active);
 		comboLength = active ? comboLength : 0;
 		
 		repaint();
@@ -571,7 +571,7 @@ public class GameBoard extends JComponent implements MouseInputListener, ActionL
 		}
 		
 		// signify score update *** CHANGE
-		scoreDisplay.updateScore(grid.getScore());
+		header.updateScore(grid.getScore());
 		
 		// before moving on to next turn, check if turn ended
 		// aka 1. you win OR 2. you run out of space
