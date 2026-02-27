@@ -10,7 +10,7 @@ To run this project, clone the repo to your local machine and run the following 
 ```
 mkdir bin
 javac -d bin $(find src/blockblast -name "*.java")
-cp -r src/resources/ bin/
+cp -r src/resources/* bin/
 java -cp bin blockblast.gui.BigGUI
 ```
 
