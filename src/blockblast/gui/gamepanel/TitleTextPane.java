@@ -66,7 +66,7 @@ public class TitleTextPane extends JTextPane implements ScoreDisplayer
 		setText(playerName + SEPARATOR + score + PTS);
 		
 		setOpaque(false);
-		setBorder(new LineBorder(DARK_BLUE, 6));
+		setBorder(new LineBorder(DARK_BLUE, 4));
 		
 		styledDoc = getStyledDocument();
 		SimpleAttributeSet overallStyle = new SimpleAttributeSet();
