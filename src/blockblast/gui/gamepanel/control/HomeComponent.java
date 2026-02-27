@@ -37,7 +37,7 @@ public class HomeComponent extends JPanel
 	
 	public HomeComponent()
 	{
-		homeIcon = BigGUI.loadImage("homeIcon.png");
+		homeIcon = BigGUI.loadImage("homeIcon2.png");
 		
 		// set bounds
 		bounds = null;
