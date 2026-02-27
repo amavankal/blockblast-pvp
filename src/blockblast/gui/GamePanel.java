@@ -82,7 +82,7 @@ public class GamePanel extends JPanel
 	private JPanel[] titleContainers; // 7
 	private JPanel[] gameBoardContainers; // NEW
 	
-	private TitleTextPane[] titleTexts;
+	private Header[] headers;
 	private GameBoard[] gameBoards; // NEW
 	private ControlPanel controlPanel; // 8
 	
@@ -127,7 +127,7 @@ public class GamePanel extends JPanel
 		pAreas = new JPanel[NUM_PLAYERS];
 		titleContainers = new JPanel[NUM_PLAYERS];
 		gameBoardContainers = new JPanel[NUM_PLAYERS];
-		titleTexts = new TitleTextPane[NUM_PLAYERS];
+		headers = new Header[NUM_PLAYERS];
 		gameBoards = new GameBoard[NUM_PLAYERS];
 		
 		initializePlayerArea(P1);
@@ -180,10 +180,10 @@ public class GamePanel extends JPanel
 		titleContainers[p] = new JPanel();
 		titleContainers[p].setLayout(new BoxLayout(titleContainers[p],
 				BoxLayout.X_AXIS));
-		titleTexts[p] = new TitleTextPane();
+		headers[p] = new Header();
 		
 		titleContainers[p].add(Box.createRigidArea(buffer));
-		titleContainers[p].add(titleTexts[p]);
+		titleContainers[p].add(headers[p]);
 		titleContainers[p].add(Box.createRigidArea(buffer));
 		
 		titleContainers[p].setOpaque(false); // set transparent
@@ -193,7 +193,7 @@ public class GamePanel extends JPanel
 		gameBoardContainers[p].setLayout(new BoxLayout(gameBoardContainers[p],
 				BoxLayout.X_AXIS));
 		
-		gameBoards[p] = new GameBoard(buffer, titleTexts[p]);
+		gameBoards[p] = new GameBoard(buffer, headers[p]);
 		
 		gameBoardContainers[p].add(Box.createRigidArea(buffer));
 		gameBoardContainers[p].add(gameBoards[p]);
@@ -287,8 +287,8 @@ public class GamePanel extends JPanel
 	private void applyComponentDimensions()
 	{
 		// apply dimensions
-		titleTexts[P1].setPreferredSize(titleDim);
-		titleTexts[P2].setPreferredSize(titleDim);
+		headers[P1].setPreferredSize(titleDim);
+		headers[P2].setPreferredSize(titleDim);
 		
 		gameBoards[P1].setPreferredSize(gameBoardDim);
 		gameBoards[P2].setPreferredSize(gameBoardDim);
