@@ -25,8 +25,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-//import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 
 import javax.imageio.ImageIO;
@@ -62,6 +60,8 @@ public class WelcomePanel extends JPanel
 	
 	private static final String BUTTON_TEXT = "START!";
 	private static final String BUTTON_FONT = BigGUI.TITLE_FONT.getFontName();
+
+	private static final BufferedImage BACKGROUND = loadImage("background2.png");
 	
 	private static final String[][] TEXT = {
 			{"WELCOME TO\n"},
@@ -258,7 +258,7 @@ public class WelcomePanel extends JPanel
 		startContainer.add(start);
 	}
 	
-	/**	PAINTS THE BOARD
+	/**	Paint component -- paint the background image
 	 */
 	@Override
 	public void paintComponent(Graphics g)
@@ -266,25 +266,37 @@ public class WelcomePanel extends JPanel
 		Graphics2D g2 = (Graphics2D) g;
 		super.paintComponent(g);
 		
-		BufferedImage background;
-		
-		// FIXME: use OS-independent filepath
-		//File f = new File("");
-		try
-		{
+		if (BACKGROUND != null) {
 			setOpaque(false);
-			InputStream in = getClass().getResourceAsStream("/images/background2.png");
-			background = ImageIO.read(in);
-			g2.drawImage(background, 0, 0, getWidth(), getHeight(), 0, 0,
-					background.getWidth(), background.getHeight(), null);
-		}
-		catch (IOException io)
-		{
-			System.out.println(io.getMessage() + " Unable to draw Welcome screen background");
-
-			// just set BG to blue if input file couldn't be read
+			g2.drawImage(BACKGROUND, 0, 0, getWidth(), getHeight(), 0, 0,
+				BACKGROUND.getWidth(), BACKGROUND.getHeight(), null);
+		} else {
 			setOpaque(true);
 			setBackground(BigGUI.BACKGROUND);
+		}
+	}
+
+	/**	Helper method to load image.
+	 * @param imageFile name of image to load. it is assumed the image
+	 * 			is located in resources/images/ in src or images/ in bin/
+	 * @return a BufferedImage derived from the given image file
+	 */
+	private static BufferedImage loadImage(String imageFile) {
+		try {
+			InputStream imageStream = BigGUI.class.getResourceAsStream("/images/" + imageFile);
+			
+			if (imageStream == null)
+				throw new Exception("Image " + imageFile + " not found in /images");
+			
+			// return image
+			return ImageIO.read(imageStream);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Can not retrieve welcome screen background.");
+
+			// return null
+			return null;
 		}
 	}
 
