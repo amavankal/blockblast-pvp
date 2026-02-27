@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# remove bin if it already exist, and then create empty bin
+rm -rf bin
+mkdir -p bin
+
+# compile java files to bin & copy over resources
+javac -d bin $(find src/blockblast -name "*.java")
+cp -r src/resources/* bin/
+
+# run project
+java -cp bin blockblast.gui.BigGUI
