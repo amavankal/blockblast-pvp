@@ -27,18 +27,17 @@ public class HomeComponent extends JPanel
 	private static final long serialVersionUID = 70002292630264072L;
 	
 	// size constants
-	public static final double ICON_FRAME_PROP = .55;
+	public static final double ICON_FRAME_PROP = .65;
+
+	// home icon
+	private static final BufferedImage homeIcon = BigGUI.loadImage("homeIcon2.png");
 	
 	// instance vars 
-	private BufferedImage homeIcon;
-	private Rectangle2D.Double bounds;
-	
+	private Rectangle2D.Double bounds; // to track when mouse is over icon
 	private HomeComponentListener listener;
 	
 	public HomeComponent()
 	{
-		homeIcon = BigGUI.loadImage("homeIcon2.png");
-		
 		// set bounds
 		bounds = null;
 		
@@ -54,15 +53,15 @@ public class HomeComponent extends JPanel
 	@Override
 	public void paintComponent(Graphics g)
 	{
-		// 1: draw background
+		// 1: fill background
 		Graphics2D g2 = (Graphics2D) g;
 		
 		g2.setColor(GamePanel.BACKGROUND);
 		g2.fill(new Rectangle2D.Double(0, 0, getBounds().width, getBounds().height));
 		
 		// 2 : draw image
-		int width = (int) getPreferredSize().getWidth();
-		int height = (int) getPreferredSize().getHeight();
+		int width = getWidth();
+		int height = getHeight();
 		
 		int size = (int) (width > height ? height * ICON_FRAME_PROP : width * ICON_FRAME_PROP);
 		
@@ -84,7 +83,7 @@ public class HomeComponent extends JPanel
 	 */
 	private class HomeComponentListener extends MouseAdapter
 	{
-		private boolean inBoundsPress;
+		private boolean inBoundsPress; // track if home icon has been presssed
 		
 		@Override
 		public void mousePressed(MouseEvent e)

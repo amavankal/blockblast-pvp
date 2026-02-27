@@ -24,19 +24,18 @@ public class InfoComponent extends JPanel
 	// serial version uid
 	private static final long serialVersionUID = 3907171909247848349L;
 	
-	// constants
-	public static final double ICON_FRAME_PROP = .55;
+	// size constants
+	public static final double ICON_FRAME_PROP = .65;
 	
+	// info icon
+	private static final BufferedImage infoIcon = BigGUI.loadImage("infoIcon.png");
+
 	// instance variables
-	private BufferedImage infoIcon;
 	private Rectangle2D.Double bounds;
-	
 	private InfoComponentListener listener;
 	
 	public InfoComponent()
 	{
-		infoIcon = BigGUI.loadImage("infoIcon.png");
-		
 		// set bounds
 		bounds = null;
 		
@@ -52,7 +51,7 @@ public class InfoComponent extends JPanel
 	@Override
 	public void paintComponent(Graphics g)
 	{
-		// 1: draw background
+		// 1: fill background
 		Graphics2D g2 = (Graphics2D) g;
 		
 		g2.setColor(GamePanel.BACKGROUND);
@@ -61,8 +60,8 @@ public class InfoComponent extends JPanel
 		// 2 : draw image, if infoIcon exists
 		if (infoIcon != null)
 		{
-			int width = (int) getPreferredSize().getWidth();
-			int height = (int) getPreferredSize().getHeight();
+			int width = getWidth();
+			int height = getHeight();
 			
 			int size = (int) (width > height ? height * ICON_FRAME_PROP : width * ICON_FRAME_PROP);
 			
