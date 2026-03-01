@@ -21,15 +21,15 @@ import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
 import javax.swing.JDialog;
-import javax.swing.JTextPane;
+import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
 
 import blockblast.gui.BigGUI;
 
-public class Header extends JTextPane
+// TODO use constant border color
+// TODO refer back to owner board for board active state
+
+public class Header extends JPanel
 {
 	// serial version uid
 	private static final long serialVersionUID = 2967292054716773470L;
@@ -50,7 +50,6 @@ public class Header extends JTextPane
 	// instance variables
 	private String playerName;
 	private int score;
-	private StyledDocument styledDoc;
 	
 	// name change panel
 	private JDialog dialogue;
@@ -60,38 +59,21 @@ public class Header extends JTextPane
 	
 	public Header()
 	{
+		// set player name to default, score to 0, and board active to true
 		playerName = DEFAULT_NAME + playerNum++;
 		score = 0;
 		boardActivated = true;
-
-		// set specs
-		setEditable(false);
-		setCaretColor(new Color(0, 0, 0, 0)); // TODO
-		setText(playerName + SEPARATOR + score + PTS);
 		
+		// set clear background & border
 		setOpaque(false);
 		setBorder(new LineBorder(DARK_BLUE, 4));
-		
-		styledDoc = getStyledDocument();
-		SimpleAttributeSet overallStyle = new SimpleAttributeSet();
-		
-		StyleConstants.setFontFamily(overallStyle, NAME_FONT.getFontName());
-		StyleConstants.setAlignment(overallStyle, StyleConstants.ALIGN_CENTER);
-		StyleConstants.setForeground(overallStyle, Color.WHITE);
-		StyleConstants.setFontSize(overallStyle, 
-				(int) (getPreferredSize().getHeight() * FONT_HEIGHT_PROP));
-		StyleConstants.setSpaceAbove(overallStyle, -2.5f);
-		
-		styledDoc.setParagraphAttributes(0, 1, overallStyle, true);
-		
-		// set up dialog
 	}
 
 	public int updateScore(int newScore)
 	{
 		int oldScore = score;
 		score = newScore;
-		setText(playerName + SEPARATOR + score);
+		repaint();
 		
 		return oldScore;
 	}
