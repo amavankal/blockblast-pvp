@@ -162,7 +162,6 @@ public class GameBoard extends JComponent implements MouseInputListener, ActionL
 			turnNum = active ? turnNum + 1 : turnNum - 1;
 		
 		boardActivated = active;
-		header.setActive(active);
 		comboLength = active ? comboLength : 0;
 		
 		repaint();
