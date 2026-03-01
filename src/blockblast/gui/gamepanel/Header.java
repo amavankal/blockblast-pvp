@@ -64,6 +64,8 @@ public class Header extends JPanel
 	// state
 	private boolean boardActivated;
 	
+	/** Constructor
+	 */
 	public Header()
 	{
 		// set player name to default, score to 0, and board active to true
@@ -76,6 +78,10 @@ public class Header extends JPanel
 		setBorder(new LineBorder(BORDER, 4));
 	}
 
+	/**	Update the score displayed by this header
+	 *	@param newScore the new score to display
+	 *	@return the old score that was previously displayed
+	 */
 	public int updateScore(int newScore)
 	{
 		int oldScore = score;
@@ -90,6 +96,8 @@ public class Header extends JPanel
 		boardActivated = active;
 	}
 	
+	/**	Paint the background and text (name & score)
+	 */
 	@Override
 	public void paintComponent(Graphics g)
 	{
