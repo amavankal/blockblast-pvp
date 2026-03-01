@@ -11,6 +11,13 @@ In order to compile and run this project, you must have the JRE and JDK installe
 
 The build scripts also will only work for macOS and Linux. If you want it to work for Windows you'd need Git Bash or WSL (Windows Subsystem for Linux).
 
-## Demo images :)
-![Gameplay 1](docs/images/gameplay-demo-1.png)
-![Gameplay 2](docs/images/gameplay-demo-2.png)
+## Demo images
+<img src="docs/images/game-demo-1.png" alt="demo image 1" width=200>
+<img src="docs/images/game-demo-2.png" alt="demo image 2" width=200>
+
+## Demo videos
+![interactivity demo](docs/videos/interactivity-demo.mov)
+![streak demo](docs/videos/streak-demo.mov)
+![clear many lines demo](docs/videos/clear-many-lines-demo.mov)
+![lose because ran out of space demo](docs/videos/no-space-demo.mov)
+![win because of score demo](docs/videos/score-win-demo.mov)
