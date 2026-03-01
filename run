@@ -2,7 +2,7 @@
 
 # check that bin exists & has files
 if [ ! -d bin ] || [ -z "$(ls -A bin)" ]; then
-	echo "bin/ directory is missing or empty. Please compile first with ./buildandrun." 
+	printf "bin/ directory is missing or empty. Please compile first with ./buildandrun.\n" 
 	exit
 fi
 
