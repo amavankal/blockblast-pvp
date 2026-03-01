@@ -11,16 +11,16 @@ In order to compile and run this project, you must have the JRE and JDK installe
 
 The build scripts also will only work for macOS and Linux. If you want it to work for Windows you'd need Git Bash or WSL (Windows Subsystem for Linux).
 
-## Demo images
-<img src="docs/images/game-demo-1.png" alt="demo image 1" width=600>
-<img src="docs/images/game-demo-2.png" alt="demo image 2" width=600>
+## Demo images :)
+<img src="docs/images/game-demo-1.png" alt="demo image 1" style="width: 80%">
+<img src="docs/images/game-demo-2.png" alt="demo image 2" style="width: 80%">
 
-## Demo videos
+## Demo videos :)
 ### Gameplay
 
-https://github.com/user-attachments/assets/3c03946f-be0f-4998-816a-70166a89fead
-
 https://github.com/user-attachments/assets/1d759609-95ca-44a2-9688-c8c28a63c131
+
+https://github.com/user-attachments/assets/3c03946f-be0f-4998-816a-70166a89fead
 
 https://github.com/user-attachments/assets/8409d4ac-7925-4b18-8ada-a0c1115ea66a
 
