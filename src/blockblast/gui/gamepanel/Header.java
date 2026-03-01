@@ -61,9 +61,6 @@ public class Header extends JPanel
 	// name change panel
 	private JDialog dialogue;
 	
-	// state
-	private boolean boardActivated;
-	
 	/** Constructor
 	 */
 	public Header()
@@ -71,7 +68,6 @@ public class Header extends JPanel
 		// set player name to default, score to 0, and board active to true
 		playerName = DEFAULT_NAME + playerNum++;
 		score = 0;
-		boardActivated = true;
 		
 		// set clear background & default border
 		setOpaque(false);
@@ -89,11 +85,6 @@ public class Header extends JPanel
 		repaint();
 		
 		return oldScore;
-	}
-
-	public void setActive(boolean active)
-	{
-		boardActivated = active;
 	}
 	
 	/**	Paint the background and text (name & score)
