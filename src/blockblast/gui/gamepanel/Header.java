@@ -13,6 +13,7 @@
 package blockblast.gui.gamepanel;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 //import java.awt.event.ActionEvent;
@@ -26,6 +27,8 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
+import blockblast.gui.BigGUI;
+
 public class Header extends JTextPane
 {
 	// serial version uid
@@ -37,6 +40,8 @@ public class Header extends JTextPane
 	public static final Color LESS_DARK_BLUE = new Color(71, 57, 197, 200);
 	
 	public static final String DEFAULT_NAME = "PLAYER ";
+	public static final Font NAME_FONT = BigGUI.PLAIN_FONT;
+
 	private static int playerNum = 1;
 	
 	private static final String SEPARATOR = ": ";
@@ -58,7 +63,7 @@ public class Header extends JTextPane
 		playerName = DEFAULT_NAME + playerNum++;
 		score = 0;
 		boardActivated = true;
-		
+
 		// set specs
 		setEditable(false);
 		setCaretColor(new Color(0, 0, 0, 0)); // TODO
@@ -70,7 +75,7 @@ public class Header extends JTextPane
 		styledDoc = getStyledDocument();
 		SimpleAttributeSet overallStyle = new SimpleAttributeSet();
 		
-		StyleConstants.setFontFamily(overallStyle, "Jokerman");
+		StyleConstants.setFontFamily(overallStyle, NAME_FONT.getFontName());
 		StyleConstants.setAlignment(overallStyle, StyleConstants.ALIGN_CENTER);
 		StyleConstants.setForeground(overallStyle, Color.WHITE);
 		StyleConstants.setFontSize(overallStyle, 
