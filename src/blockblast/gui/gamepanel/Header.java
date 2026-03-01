@@ -28,8 +28,13 @@ import javax.swing.border.LineBorder;
 
 import blockblast.gui.BigGUI;
 
-// TODO use constant border color
+// TODO use constant border color, text color
 // TODO refer back to owner board for board active state
+// TODO clean up code
+// TODO add plus n effect whenver new points are added
+// TODO create gameInfo object instead of passing all the parameters
+// TODO randomize first player
+// TODO option to continue playing
 
 public class Header extends JPanel
 {

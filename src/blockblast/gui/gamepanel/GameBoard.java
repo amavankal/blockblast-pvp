@@ -11,14 +11,11 @@
  *    - count # turns
  *     - log games, store scores, store dates, players, etc..
  *     - draw null first, then blocks
- *     
- *     
- *     TODO
- *      - don't do Turns, but track COMBOS !!!!!
- *       - rethink how exactly combo / streaks work
  * 
  */
 
+// TODO make blocks fit in block bank
+// TODO make smaller, this is like a monsterclass rn
 
 package blockblast.gui.gamepanel;
 
