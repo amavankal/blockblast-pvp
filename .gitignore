@@ -1,5 +1,3 @@
 # compiled output directory
 bin/
 
-# macOS system files
-.DS_Store
