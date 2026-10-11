@@ -9,7 +9,7 @@ The game displays a win message either when someone reaches 5000 points or someo
 ## How to run
 To run this project, clone the repo to your local machine and run `./buildandrun` in the root directory. Once you've run this script, you can rerun the project with `./run`, and if you make any changes you can re-compile and run with `./buildandrun` again.
 
-In order to compile and run this project, you must have the JRE and JDK installed so that `java` and `javac` work. You can check if you have these installed with `java --version` and `javac --version`. If you don't have them installed, navigate to [this link](https://www.oracle.com/java/technologies/downloads/) and download the appropriate version for your OS.
+In order to compile and run this project, you must have the JRE and JDK installed so that `java` and `javac` work. You can check if you have these installed with `java --version` and `javac --version`. If you don't have them installed, you can navigate to the <a href="https://www.oracle.com/java/technologies/downloads/" target="blank">Java downloads page</a> and download the appropriate version for your OS.
 
 The build scripts also will only work for macOS and Linux. If you want it to work for Windows you'd need Git Bash or WSL (Windows Subsystem for Linux).
 
